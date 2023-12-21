@@ -54,8 +54,17 @@ const getAllCourseFromDB = async () => {
 // ================================================
 
 const getSingleCourseFromDB = async (_id: string) => {
-  const CourseData = await CourseModel.find({ _id });
+  const CourseData = await CourseModel.findOne({ _id });
   const result = { course: CourseData };
+  return result;
+};
+
+// ================================================
+// Delete user _id
+// ================================================
+
+const deleteUserDataFromDB = async (_id: string) => {
+  const result = await CourseModel.findByIdAndDelete({ _id });
   return result;
 };
 
@@ -63,4 +72,5 @@ export const CourseServices = {
   createCourseIntoDB,
   getAllCourseFromDB,
   getSingleCourseFromDB,
+  deleteUserDataFromDB,
 };

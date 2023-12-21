@@ -35,19 +35,39 @@ const getAllCourse = catchAsync(async (req, res) => {
 // single course get by id
 // ================================================
 
-// const getSingleCourse = catchAsync(async (req, res) => {
-//   const _id = req.params._id;
-//   const courseid = await CourseServices.getSingleCourseFromDB(_id);
+const getSingleCourse = catchAsync(async (req, res) => {
+  const _id = req.params._id;
+  const Result = await CourseServices.getSingleCourseFromDB(_id);
 
-//   sendCourseResponse(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: 'Single Course Data retrieved successfully',
-//     data: courseid,
-//   });
-// });
+  sendCourseResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Single Course Data retrieved successfully',
+    data: Result,
+  });
+});
+
+// ================================================
+// Delete user _id
+// ================================================
+const deleteSingleCourse = catchAsync(async (req, res) => {
+  const CourseId = req.params._id;
+
+  if (!CourseId) {
+    throw new Error('User ID is required');
+  }
+  await CourseServices.deleteUserDataFromDB(CourseId);
+  sendCourseResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Single Course Data Delete successfully',
+    data: CourseId,
+  });
+});
 
 export const CourseController = {
   createCourse,
   getAllCourse,
+  getSingleCourse,
+  deleteSingleCourse,
 };
