@@ -7,6 +7,7 @@ const courseSchema = new Schema<Tcourse>({
   price: { type: Number, required: true },
   level: { type: String, enum: ['Beginner', 'Intermediate', 'Advanced'] },
   topics: { type: [String], required: true },
+  duration: { type: Number, required: true },
   schedule: {
     startDate: { type: String, required: true },
     endDate: { type: String, required: true },
