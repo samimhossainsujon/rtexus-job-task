@@ -15,13 +15,13 @@ git clone
 https://github.com/samimhossainsujon/rtexus-job-task
 ```
 
-Go to project directory
+Go to the project directory
 
 ```bash
     cd the project
 ```
 
-Install require dependance
+Install require dependence
 
 ```bash
     npm install
@@ -44,28 +44,28 @@ Create a user
  http://localhost:5000/api/course
 ```
 
-Get all user
+Get all Course
 
 ```bash
  http://localhost:5000/api/course
 
 ```
 
-Get Single user
+Get Single Course
 
 ```bash
  http://localhost:5000/api/course/:_id
 
 ```
 
-Update Single user
+Update Course user
 
 ```bash
  http://localhost:5000/api/course/:_id
 
 ```
 
-Delete Single user
+Delete Course user
 
 ```bash
  http://localhost:5000/api/course/:_id
