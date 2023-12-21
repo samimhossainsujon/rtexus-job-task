@@ -14,21 +14,18 @@ const createCourse = catchAsync(async (req, res) => {
   });
 });
 
-const getSingleCourse = catchAsync(async (req, res) => {
-  const _id = req.params._id;
-  const courseid = await CourseServices.getSingleCourseFromDB(_id);
+// const getSingleCourse = catchAsync(async (req, res) => {
+//   const _id = req.params._id;
+//   const courseid = await CourseServices.getSingleCourseFromDB(_id);
 
-  sendCourseResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Single Course Data retrieved successfully',
-    data: courseid,
-  });
-});
-
-
+//   sendCourseResponse(res, {
+//     statusCode: httpStatus.OK,
+//     success: true,
+//     message: 'Single Course Data retrieved successfully',
+//     data: courseid,
+//   });
+// });
 
 export const CourseController = {
   createCourse,
-  getSingleCourse,
 };

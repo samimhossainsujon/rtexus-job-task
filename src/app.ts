@@ -14,7 +14,7 @@ app.use(cors());
 app.use('/api', router);
 
 app.get('/', (req: Request, res: Response) => {
-  res.send(`Assinment 3 Server is running `);
+  res.send(`Job Task Server is running `);
 });
 
 app.use(GlobalErrorHandler);
