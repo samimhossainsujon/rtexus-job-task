@@ -36,9 +36,9 @@ npm run start:dev
 
 ##### Then check how to work this project go to Postman
 
-###### User Related Api
+###### Course Related Api
 
-Create a user
+Create a Course
 
 ```bash
  http://localhost:5000/api/course
@@ -58,14 +58,14 @@ Get Single Course
 
 ```
 
-Update Course user
+Update Course Course
 
 ```bash
- http://localhost:5000/api/course/:_id
+ http://localhost:5000/api/course/:_i
 
 ```
 
-Delete Course user
+Delete Course Course
 
 ```bash
  http://localhost:5000/api/course/:_id
