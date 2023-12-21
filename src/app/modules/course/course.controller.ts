@@ -65,9 +65,29 @@ const deleteSingleCourse = catchAsync(async (req, res) => {
   });
 });
 
+// ================================================
+// Update single Course
+// ================================================
+
+const updateSingelCourse = catchAsync(async (req, res) => {
+  const _id: string = req.params._id;
+  const updatedData = req.body;
+  if (!_id) {
+    throw new Error('User ID is required');
+  }
+  const result = await CourseServices.updateCourseDataInDB(_id, updatedData);
+  sendCourseResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Single Course Data update successfully',
+    data: result,
+  });
+});
+
 export const CourseController = {
   createCourse,
   getAllCourse,
   getSingleCourse,
   deleteSingleCourse,
+  updateSingelCourse,
 };

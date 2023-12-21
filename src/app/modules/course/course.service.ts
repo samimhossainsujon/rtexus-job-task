@@ -68,9 +68,42 @@ const deleteUserDataFromDB = async (_id: string) => {
   return result;
 };
 
+// =======================================
+// update User Data In DB
+// =======================================
+
+const updateCourseDataInDB = async (
+  _id: string,
+  updatedData: {
+    name?: string;
+    description?: string;
+    price?: number;
+    duration?: number;
+    topics?: string[];
+    level?: 'Beginner' | 'Intermediate' | 'Advanced';
+    schedule?: {
+      startDate?: string;
+      endDate?: string;
+      classDays?: string[];
+      classTime?: string;
+    };
+  },
+) => {
+  const result = await CourseModel.findOneAndUpdate({ _id }, updatedData, {
+    new: true,
+  });
+
+  if (!result) {
+    throw new Error('User not found');
+  }
+
+  return result;
+};
+
 export const CourseServices = {
   createCourseIntoDB,
   getAllCourseFromDB,
   getSingleCourseFromDB,
   deleteUserDataFromDB,
+  updateCourseDataInDB,
 };
