@@ -1,11 +1,9 @@
 import { Tcourse } from './course.interface';
 import CourseModel from './course.model';
 
-// const createCourseIntoDB = async (Course: Tcourse) => {
-//   const result = await CourseModel.create(Course);
-//   return result;
-// };
-
+// =====================================
+// Post Course
+// ======================================
 class CourseService {
   calculateDurationInWeeks(startDate: string, endDate: string): number {
     const start = new Date(startDate);
@@ -31,10 +29,7 @@ class CourseService {
   }
 }
 
-// Usage of the CourseService class
 const courseService = new CourseService();
-
-// Example usage of createCourseIntoDB function
 const createCourseIntoDB = async (course: Tcourse) => {
   try {
     const result = await courseService.createCourse(course);
@@ -45,13 +40,27 @@ const createCourseIntoDB = async (course: Tcourse) => {
   }
 };
 
+// ================================================
+// all course get function
+// ================================================
+
+const getAllCourseFromDB = async () => {
+  const result = await CourseModel.find();
+  return result;
+};
+
+// ================================================
+// single course get by id
+// ================================================
+
 const getSingleCourseFromDB = async (_id: string) => {
-  const CourseData = await CourseModel.findOne({ _id });
+  const CourseData = await CourseModel.find({ _id });
   const result = { course: CourseData };
   return result;
 };
 
 export const CourseServices = {
   createCourseIntoDB,
+  getAllCourseFromDB,
   getSingleCourseFromDB,
 };

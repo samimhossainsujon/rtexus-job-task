@@ -3,6 +3,10 @@ import catchAsync from '../../utils/catchAsync';
 import sendCourseResponse from '../../utils/sendCourseResposnse';
 import { CourseServices } from './course.service';
 
+// =====================================
+// Post Course
+// ======================================
+
 const createCourse = catchAsync(async (req, res) => {
   const courseData = req.body;
   const result = await CourseServices.createCourseIntoDB(courseData);
@@ -13,6 +17,23 @@ const createCourse = catchAsync(async (req, res) => {
     data: result,
   });
 });
+
+// ================================================
+// all course get function
+// ================================================
+const getAllCourse = catchAsync(async (req, res) => {
+  const result = await CourseServices.getAllCourseFromDB();
+  sendCourseResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Course Recived Successfully',
+    data: result,
+  });
+});
+
+// ================================================
+// single course get by id
+// ================================================
 
 // const getSingleCourse = catchAsync(async (req, res) => {
 //   const _id = req.params._id;
@@ -28,4 +49,5 @@ const createCourse = catchAsync(async (req, res) => {
 
 export const CourseController = {
   createCourse,
+  getAllCourse,
 };
